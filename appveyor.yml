@@ -64,7 +64,7 @@
     - ps: gitversion /l console /output buildserver /updateAssemblyInfo
 
   build_script:
-    - cmd: '"%ProgramFiles(x86)%\MSBuild\14.0\Bin\MSBuild.exe" build.proj /t:BuildAll; /p:BuildConfig=Release'
+    - cmd: '"%ProgramFiles(x86)%\MSBuild\14.0\Bin\MSBuild.exe" build.proj /t:BuildAll /p:BuildConfig=Release'
 
   test_script:
   - cmd: >-
