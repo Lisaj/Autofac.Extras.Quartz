@@ -23,7 +23,7 @@
     - cmd: '"%ProgramFiles(x86)%\MSBuild\14.0\Bin\MSBuild.exe" build.proj /t:BuildAll;Pack /p:PackageVersion="%GitVersion_NuGetVersion%" /p:BuildConfig=Release'
 
   test_script:
-  - ps: >-
+  - cmd: >-
       cd src/Tests/bin/Release
 
       nunit3-console Autofac.Extras.Quartz.Tests.dll --result=test-results.xml;format=AppVeyor --dispose-runners --nocolor
@@ -57,7 +57,7 @@
     - cmd: '"%ProgramFiles(x86)%\MSBuild\14.0\Bin\MSBuild.exe" build.proj /t:BuildAll /p:BuildConfig=Release'
 
   test_script:
-  - ps: >-
+  - cmd: >-
       cd src/Tests/bin/Release
 
       nunit3-console Autofac.Extras.Quartz.Tests.dll --result=test-results.xml;format=AppVeyor --dispose-runners --nocolor
