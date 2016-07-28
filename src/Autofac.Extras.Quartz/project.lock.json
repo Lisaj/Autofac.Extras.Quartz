@@ -1,0 +1,159 @@
+{
+  "locked": false,
+  "version": 2,
+  "targets": {
+    ".NETFramework,Version=v4.6.1": {
+      "Autofac/4.0.0-rc3-316": {
+        "type": "package",
+        "compile": {
+          "lib/net451/Autofac.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Autofac.dll": {}
+        }
+      },
+      "Common.Logging/3.4.0-alpha1": {
+        "type": "package",
+        "dependencies": {
+          "Common.Logging.Core": "3.4.0-Alpha1"
+        },
+        "compile": {
+          "lib/net40/Common.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Common.Logging.dll": {}
+        }
+      },
+      "Common.Logging.Core/3.4.0-alpha1": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Common.Logging.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Common.Logging.Core.dll": {}
+        }
+      },
+      "JetBrains.Annotations/10.1.5": {
+        "type": "package",
+        "compile": {
+          "lib/net/JetBrains.Annotations.dll": {}
+        },
+        "runtime": {
+          "lib/net/JetBrains.Annotations.dll": {}
+        }
+      },
+      "Quartz/2.3.3": {
+        "type": "package",
+        "dependencies": {
+          "Common.Logging": "3.0.0"
+        },
+        "compile": {
+          "lib/net40/Quartz.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Quartz.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Autofac/4.0.0-rc3-316": {
+      "sha512": "Fx4lqVHUVHLU/F+JiZSFarRz1+9KuS452JkKWwWSPBGxtxlitqxFmxuXPFlOyj/SfLO2lDNhPVyOCyyCwNdfnA==",
+      "type": "package",
+      "path": "Autofac/4.0.0-rc3-316",
+      "files": [
+        "Autofac.4.0.0-rc3-316.nupkg.sha512",
+        "Autofac.nuspec",
+        "lib/net451/Autofac.dll",
+        "lib/net451/Autofac.xml",
+        "lib/netstandard1.1/Autofac.dll",
+        "lib/netstandard1.1/Autofac.xml",
+        "lib/uap10.0/Autofac.dll",
+        "lib/uap10.0/Autofac.xml"
+      ]
+    },
+    "Common.Logging/3.4.0-alpha1": {
+      "sha512": "FXVw92WFQ8mOxLoTqddzIR9F7+sGrU1V9OQRjWleNOKM3ijBgtutLkm17/m+5hgr/+mQAjpjdxlnu8wxWt0ZXg==",
+      "type": "package",
+      "path": "Common.Logging/3.4.0-alpha1",
+      "files": [
+        "Common.Logging.3.4.0-alpha1.nupkg.sha512",
+        "Common.Logging.nuspec",
+        "lib/net35/Common.Logging.dll",
+        "lib/net35/Common.Logging.pdb",
+        "lib/net35/Common.Logging.xml",
+        "lib/net40/Common.Logging.dll",
+        "lib/net40/Common.Logging.pdb",
+        "lib/net40/Common.Logging.xml"
+      ]
+    },
+    "Common.Logging.Core/3.4.0-alpha1": {
+      "sha512": "gBylGYvXnDLpIDZWWOeSjMluplDgPgx0ic7wMqyOwG1z6+FitZ9zaJxW7hWl6A5lRZDn0BMRiB0pjO+NT/tDhg==",
+      "type": "package",
+      "path": "Common.Logging.Core/3.4.0-alpha1",
+      "files": [
+        "Common.Logging.Core.3.4.0-alpha1.nupkg.sha512",
+        "Common.Logging.Core.nuspec",
+        "lib/net35/Common.Logging.Core.dll",
+        "lib/net35/Common.Logging.Core.pdb",
+        "lib/net35/Common.Logging.Core.xml",
+        "lib/net40/Common.Logging.Core.dll",
+        "lib/net40/Common.Logging.Core.pdb",
+        "lib/net40/Common.Logging.Core.xml",
+        "lib/portable-win+net40+sl40+wp7+wpa81/Common.Logging.Core.XML",
+        "lib/portable-win+net40+sl40+wp7+wpa81/Common.Logging.Core.dll",
+        "lib/portable-win+net40+sl40+wp7+wpa81/Common.Logging.Core.pdb"
+      ]
+    },
+    "JetBrains.Annotations/10.1.5": {
+      "sha512": "LRyTrsiTWsV4C4cUMfdEkAdd8S0BREvj3hXZ1gGr3GZGFf0q2KW3IFGMPOguAxOrWH44Nw12jqr37B1Jph2E6A==",
+      "type": "package",
+      "path": "JetBrains.Annotations/10.1.5",
+      "files": [
+        "JetBrains.Annotations.10.1.5.nupkg.sha512",
+        "JetBrains.Annotations.nuspec",
+        "lib/dotnet/JetBrains.Annotations.Dotnet.dll",
+        "lib/net/JetBrains.Annotations.dll",
+        "lib/net/JetBrains.Annotations.xml",
+        "lib/portable-net4+sl4+wp7+netcore45/JetBrains.Annotations.PCL1.dll",
+        "lib/portable-net4+sl4+wp7+netcore45/JetBrains.Annotations.PCL1.xml",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/JetBrains.Annotations.PCL328.dll",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/JetBrains.Annotations.PCL328.xml"
+      ]
+    },
+    "Quartz/2.3.3": {
+      "sha512": "F+A51uXNRJanC01Mii73HIx1htczjql62zisEP61/S2qGU/KH8NBzPE43FiuAur74HyaWPOgyNt3+jKL+SDwDQ==",
+      "type": "package",
+      "path": "Quartz/2.3.3",
+      "files": [
+        "Quartz.2.3.3.nupkg.sha512",
+        "Quartz.nuspec",
+        "content/job_scheduling_data_2_0.xsd",
+        "lib/net35-client/Quartz.dll",
+        "lib/net35-client/Quartz.pdb",
+        "lib/net35-client/Quartz.xml",
+        "lib/net35/Quartz.dll",
+        "lib/net35/Quartz.pdb",
+        "lib/net35/Quartz.xml",
+        "lib/net40-client/Quartz.dll",
+        "lib/net40-client/Quartz.pdb",
+        "lib/net40-client/Quartz.xml",
+        "lib/net40/Quartz.dll",
+        "lib/net40/Quartz.pdb",
+        "lib/net40/Quartz.xml"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [
+      "Autofac >= 4.0.0-rc3-316",
+      "Common.Logging >= 3.4.0-Alpha1",
+      "Common.Logging.Core >= 3.4.0-Alpha1",
+      "JetBrains.Annotations >= 10.1.5",
+      "Quartz >= 2.3.3"
+    ],
+    ".NETFramework,Version=v4.6.1": []
+  },
+  "tools": {},
+  "projectFileToolGroups": {}
+}

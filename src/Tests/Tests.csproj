@@ -129,12 +129,6 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Autofac.Extras.Quartz\Autofac.Extras.Quartz.csproj">
-      <Project>{9e5576c1-42f2-4264-ba54-ca0e417b0a33}</Project>
-      <Name>Autofac.Extras.Quartz</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

@@ -94,12 +94,6 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Autofac.Extras.Quartz\Autofac.Extras.Quartz.csproj">
-      <Project>{9e5576c1-42f2-4264-ba54-ca0e417b0a33}</Project>
-      <Name>Autofac.Extras.Quartz</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
