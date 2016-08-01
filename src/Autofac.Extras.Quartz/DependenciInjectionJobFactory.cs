@@ -14,6 +14,7 @@ namespace Autofac.Extras.Quartz
     using System.Globalization;
     using global::Quartz;
     using global::Quartz.Spi;
+    using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
 
     /// <summary>
@@ -22,34 +23,30 @@ namespace Autofac.Extras.Quartz
     /// <remarks>
     ///     Factory retuns wrapper around read job. It wraps job execution in nested lifetime scope.
     /// </remarks>
-    public class AutofacJobFactory : IJobFactory, IDisposable
+    public class DependenciInjectionJobFactory : IJobFactory, IDisposable
     {
-        readonly ILifetimeScope _lifetimeScope;
-
-        readonly string _scopeName;
+        readonly IServiceProvider _serviceProvider;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AutofacJobFactory" /> class.
+        ///     Initializes a new instance of the <see cref="DependenciInjectionJobFactory" /> class.
         /// </summary>
-        /// <param name="lifetimeScope">The lifetime scope.</param>
+        /// <param name="serviceProvider">The lifetime scope.</param>
         /// <param name="scopeName">Name of the scope.</param>
         /// <exception cref="ArgumentNullException">
-        ///     <paramref name="lifetimeScope" /> or <paramref name="scopeName" /> is
+        ///     <paramref name="serviceProvider" /> or <paramref name="scopeName" /> is
         ///     <see langword="null" />.
         /// </exception>
-        public AutofacJobFactory(ILifetimeScope lifetimeScope, string scopeName, ILoggerFactory loggerFactory)
+        public DependenciInjectionJobFactory(IServiceProvider serviceProvider, string scopeName, ILoggerFactory loggerFactory)
         {
-            if (lifetimeScope == null) throw new ArgumentNullException(nameof(lifetimeScope));
-            if (scopeName == null) throw new ArgumentNullException(nameof(scopeName));
+            if (serviceProvider == null) throw new ArgumentNullException(nameof(serviceProvider));
             if (loggerFactory == null)
             {
                 throw new ArgumentNullException(nameof(loggerFactory));
             }
 
-            _lifetimeScope = lifetimeScope;
-            _scopeName = scopeName;
+            _serviceProvider = serviceProvider;
 
-            this.Logger = loggerFactory.CreateLogger<AutofacJobFactory>();
+            this.Logger = loggerFactory.CreateLogger<DependenciInjectionJobFactory>();
         }
 
         protected ILogger Logger { get; private set; }
@@ -106,12 +103,12 @@ namespace Autofac.Extras.Quartz
 
             var jobType = bundle.JobDetail.JobType;
 
-            var nestedScope = _lifetimeScope.BeginLifetimeScope(_scopeName);
+            var nestedScope = _serviceProvider.GetRequiredService<IServiceScope>();
 
             IJob newJob = null;
             try
             {
-                newJob = (IJob) nestedScope.Resolve(jobType);
+                newJob = (IJob) nestedScope.ServiceProvider.GetService(jobType);
                 var jobTrackingInfo = new JobTrackingInfo(nestedScope);
                 RunningJobs[newJob] = jobTrackingInfo;
 
@@ -157,7 +154,7 @@ namespace Autofac.Extras.Quartz
             }
         }
 
-        protected void DisposeScope(IJob job, ILifetimeScope lifetimeScope)
+        protected void DisposeScope(IJob job, IServiceScope lifetimeScope)
         {
             if (this.Logger.IsEnabled(LogLevel.Trace))
             {
@@ -175,12 +172,12 @@ namespace Autofac.Extras.Quartz
             /// <summary>
             ///     Initializes a new instance of the <see cref="T:System.Object" /> class.
             /// </summary>
-            public JobTrackingInfo(ILifetimeScope scope)
+            public JobTrackingInfo(IServiceScope scope)
             {
                 Scope = scope;
             }
 
-            public ILifetimeScope Scope { get; }
+            public IServiceScope Scope { get; }
         }
 
         #endregion Job data

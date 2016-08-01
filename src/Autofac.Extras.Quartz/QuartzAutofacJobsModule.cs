@@ -11,14 +11,12 @@ namespace Autofac.Extras.Quartz
 {
     using System;
     using System.Reflection;
-    using Core;
     using global::Quartz;
-    using Module = Autofac.Module;
 
     /// <summary>
     ///     Registers Quartz jobs from specified assemblies.
     /// </summary>
-    public class QuartzAutofacJobsModule : Module
+    public class QuartzAutofacJobsModule
     {
         readonly Assembly[] _assembliesToScan;
 
@@ -49,7 +47,7 @@ namespace Autofac.Extras.Quartz
         /// <remarks>
         ///     See Autofac API documentation http://autofac.org/apidoc/html/33ED0D92.htm for details.
         /// </remarks>
-        public PropertyWiringOptions PropertyWiringOptions { get; set; } = PropertyWiringOptions.None;
+        //public PropertyWiringOptions PropertyWiringOptions { get; set; } = PropertyWiringOptions.None;
 
         /// <summary>
         ///     Override to add registrations to the container.
@@ -61,14 +59,14 @@ namespace Autofac.Extras.Quartz
         ///     The builder through which components can be
         ///     registered.
         /// </param>
-        protected override void Load(ContainerBuilder builder)
-        {
-            var registrationBuilder = builder.RegisterAssemblyTypes(_assembliesToScan)
-                .Where(type => !type.GetTypeInfo().IsAbstract && typeof(IJob).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))
-                .AsSelf().InstancePerLifetimeScope();
+        //protected override void Load(ContainerBuilder builder)
+        //{
+        //    var registrationBuilder = builder.RegisterAssemblyTypes(_assembliesToScan)
+        //        .Where(type => !type.GetTypeInfo().IsAbstract && typeof(IJob).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))
+        //        .AsSelf().InstancePerLifetimeScope();
 
-            if (AutoWireProperties)
-                registrationBuilder.PropertiesAutowired(PropertyWiringOptions);
-        }
+        //    if (AutoWireProperties)
+        //        registrationBuilder.PropertiesAutowired(PropertyWiringOptions);
+        //}
     }
 }

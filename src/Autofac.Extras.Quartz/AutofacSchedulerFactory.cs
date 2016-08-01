@@ -18,16 +18,16 @@ namespace Autofac.Extras.Quartz
     /// <summary>
     ///     Scheduler factory which uses Autofac to instantiate jobs.
     /// </summary>
-    public class AutofacSchedulerFactory : StdSchedulerFactory
+    public class DependenciInjectionSchedulerFactory : StdSchedulerFactory
     {
-        readonly AutofacJobFactory _jobFactory;
+        readonly DependenciInjectionJobFactory _jobFactory;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="T:Quartz.Impl.StdSchedulerFactory" /> class.
         /// </summary>
         /// <param name="jobFactory">Job factory.</param>
         /// <exception cref="ArgumentNullException"><paramref name="jobFactory" /> is <see langword="null" />.</exception>
-        public AutofacSchedulerFactory(AutofacJobFactory jobFactory)
+        public DependenciInjectionSchedulerFactory(DependenciInjectionJobFactory jobFactory)
         {
             if (jobFactory == null) throw new ArgumentNullException(nameof(jobFactory));
             _jobFactory = jobFactory;
@@ -39,7 +39,7 @@ namespace Autofac.Extras.Quartz
         /// <param name="props">The properties.</param>
         /// <param name="jobFactory">Job factory</param>
         /// <exception cref="ArgumentNullException"><paramref name="jobFactory" /> is <see langword="null" />.</exception>
-        public AutofacSchedulerFactory(NameValueCollection props, AutofacJobFactory jobFactory)
+        public DependenciInjectionSchedulerFactory(NameValueCollection props, DependenciInjectionJobFactory jobFactory)
             : base(props)
         {
             if (jobFactory == null) throw new ArgumentNullException(nameof(jobFactory));

@@ -2,7 +2,7 @@
   "version": "3.0.0-*",
 
   "dependencies": {
-    "Autofac": "4.0.0-rc3-316",
+    "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
     "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
     "Quartz": "3.0.0-*"
   },
