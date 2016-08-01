@@ -183,8 +183,8 @@
     },
     "Quartz/3.0.0": {
       "type": "project",
-      "path": "../submodules/Quartz/src/Quartz/project.json",
-      "msbuildProject": "../submodules/Quartz/src/Quartz/Quartz.xproj"
+      "path": "../../submodules/Quartz/src/Quartz/project.json",
+      "msbuildProject": "../../submodules/Quartz/src/Quartz/Quartz.xproj"
     }
   },
   "projectFileDependencyGroups": {

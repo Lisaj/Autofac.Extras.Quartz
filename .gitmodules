@@ -1,6 +1,3 @@
-[submodule "src/submodules/quartznet"]
-	path = src/submodules/quartznet
-	url = https://github.com/quartznet/quartznet.git
 [submodule "submodules/Quartz"]
 	path = submodules/Quartz
 	url = https://github.com/quartznet/quartznet.git

@@ -27,7 +27,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Autofac.Extras.Quartz", "Au
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "submodules", "submodules", "{C5CC16C0-7439-4374-9B76-153FAEEC1E5F}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Quartz", "submodules\Quartz\src\Quartz\Quartz.xproj", "{0545C4AC-45BE-47C3-81B7-1592579B9C31}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Quartz", "..\submodules\Quartz\src\Quartz\Quartz.xproj", "{0545C4AC-45BE-47C3-81B7-1592579B9C31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
