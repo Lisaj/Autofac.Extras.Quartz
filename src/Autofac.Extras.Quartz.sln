@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleService", "Samples\Si
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Autofac.Extras.Quartz", "Autofac.Extras.Quartz\Autofac.Extras.Quartz.xproj", "{FCDC3B43-12E0-420C-9308-C9642ACA3A97}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "submodules", "submodules", "{C5CC16C0-7439-4374-9B76-153FAEEC1E5F}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Quartz", "submodules\Quartz\src\Quartz\Quartz.xproj", "{0545C4AC-45BE-47C3-81B7-1592579B9C31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,11 +71,24 @@ Global
 		{FCDC3B43-12E0-420C-9308-C9642ACA3A97}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{FCDC3B43-12E0-420C-9308-C9642ACA3A97}.Release|Win32.ActiveCfg = Release|Any CPU
 		{FCDC3B43-12E0-420C-9308-C9642ACA3A97}.Release|Win32.Build.0 = Release|Any CPU
+		{0545C4AC-45BE-47C3-81B7-1592579B9C31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0545C4AC-45BE-47C3-81B7-1592579B9C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0545C4AC-45BE-47C3-81B7-1592579B9C31}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0545C4AC-45BE-47C3-81B7-1592579B9C31}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0545C4AC-45BE-47C3-81B7-1592579B9C31}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{0545C4AC-45BE-47C3-81B7-1592579B9C31}.Debug|Win32.Build.0 = Debug|Any CPU
+		{0545C4AC-45BE-47C3-81B7-1592579B9C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0545C4AC-45BE-47C3-81B7-1592579B9C31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0545C4AC-45BE-47C3-81B7-1592579B9C31}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0545C4AC-45BE-47C3-81B7-1592579B9C31}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0545C4AC-45BE-47C3-81B7-1592579B9C31}.Release|Win32.ActiveCfg = Release|Any CPU
+		{0545C4AC-45BE-47C3-81B7-1592579B9C31}.Release|Win32.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B88F06DD-19F6-4AF3-841A-325CEE150CC4} = {1B76B117-D009-4310-A613-16947AA37DE1}
+		{0545C4AC-45BE-47C3-81B7-1592579B9C31} = {C5CC16C0-7439-4374-9B76-153FAEEC1E5F}
 	EndGlobalSection
 EndGlobal

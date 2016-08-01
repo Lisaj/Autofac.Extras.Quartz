@@ -6,7 +6,7 @@
     "Common.Logging": "3.4.0-Alpha1",
     "Common.Logging.Core": "3.4.0-Alpha1",
     "JetBrains.Annotations": "10.1.5",
-    "Quartz": "2.3.3"
+    "Quartz": "3.0.0-*"
   },
 
   "frameworks": {

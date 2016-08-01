@@ -42,16 +42,42 @@
           "lib/net/JetBrains.Annotations.dll": {}
         }
       },
-      "Quartz/2.3.3": {
+      "LibLog/4.2.5": {
         "type": "package",
-        "dependencies": {
-          "Common.Logging": "3.0.0"
-        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ]
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "type": "package",
         "compile": {
-          "lib/net40/Quartz.dll": {}
+          "lib/net45/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/net40/Quartz.dll": {}
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Quartz/3.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5",
+        "dependencies": {
+          "LibLog": "4.2.5",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "frameworkAssemblies": [
+          "System.Configuration",
+          "System.Data",
+          "System.Net.Http",
+          "System.Runtime.Remoting",
+          "System.Runtime.Serialization",
+          "System.Web",
+          "System.Xml"
+        ],
+        "compile": {
+          "net45/Quartz.dll": {}
+        },
+        "runtime": {
+          "net45/Quartz.dll": {}
         }
       }
     }
@@ -121,27 +147,44 @@
         "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/JetBrains.Annotations.PCL328.xml"
       ]
     },
-    "Quartz/2.3.3": {
-      "sha512": "F+A51uXNRJanC01Mii73HIx1htczjql62zisEP61/S2qGU/KH8NBzPE43FiuAur74HyaWPOgyNt3+jKL+SDwDQ==",
+    "LibLog/4.2.5": {
+      "sha512": "3QVpWGApoJvpUBSyeJJOlpPwDgtgK5uoK0lT+5esmxFsmcNUu3QveRIP1G/s9dHfgcPhmSHAHa1W7Vgqpk98NA==",
       "type": "package",
-      "path": "Quartz/2.3.3",
+      "path": "LibLog/4.2.5",
       "files": [
-        "Quartz.2.3.3.nupkg.sha512",
-        "Quartz.nuspec",
-        "content/job_scheduling_data_2_0.xsd",
-        "lib/net35-client/Quartz.dll",
-        "lib/net35-client/Quartz.pdb",
-        "lib/net35-client/Quartz.xml",
-        "lib/net35/Quartz.dll",
-        "lib/net35/Quartz.pdb",
-        "lib/net35/Quartz.xml",
-        "lib/net40-client/Quartz.dll",
-        "lib/net40-client/Quartz.pdb",
-        "lib/net40-client/Quartz.xml",
-        "lib/net40/Quartz.dll",
-        "lib/net40/Quartz.pdb",
-        "lib/net40/Quartz.xml"
+        "LibLog.4.2.5.nupkg.sha512",
+        "LibLog.nuspec",
+        "content/App_Packages/LibLog.4.2/LibLog.cs.pp"
       ]
+    },
+    "Newtonsoft.Json/9.0.1": {
+      "sha512": "U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw==",
+      "type": "package",
+      "path": "Newtonsoft.Json/9.0.1",
+      "files": [
+        "Newtonsoft.Json.9.0.1.nupkg.sha512",
+        "Newtonsoft.Json.nuspec",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "tools/install.ps1"
+      ]
+    },
+    "Quartz/3.0.0": {
+      "type": "project",
+      "path": "../submodules/Quartz/src/Quartz/project.json",
+      "msbuildProject": "../submodules/Quartz/src/Quartz/Quartz.xproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -150,7 +193,7 @@
       "Common.Logging >= 3.4.0-Alpha1",
       "Common.Logging.Core >= 3.4.0-Alpha1",
       "JetBrains.Annotations >= 10.1.5",
-      "Quartz >= 2.3.3"
+      "Quartz >= 3.0.0-*"
     ],
     ".NETFramework,Version=v4.6.1": []
   },
