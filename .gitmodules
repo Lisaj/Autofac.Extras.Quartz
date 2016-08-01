@@ -1,0 +1,3 @@
+[submodule "src/submodules/quartznet"]
+	path = src/submodules/quartznet
+	url = https://github.com/quartznet/quartznet.git
