@@ -13,13 +13,11 @@ namespace Autofac.Extras.Quartz
     using System.Reflection;
     using Core;
     using global::Quartz;
-    using JetBrains.Annotations;
     using Module = Autofac.Module;
 
     /// <summary>
     ///     Registers Quartz jobs from specified assemblies.
     /// </summary>
-    [PublicAPI]
     public class QuartzAutofacJobsModule : Module
     {
         readonly Assembly[] _assembliesToScan;
@@ -30,7 +28,7 @@ namespace Autofac.Extras.Quartz
         /// </summary>
         /// <param name="assembliesToScan">The assemblies to scan for jobs.</param>
         /// <exception cref="System.ArgumentNullException">assembliesToScan</exception>
-        public QuartzAutofacJobsModule([NotNull] params Assembly[] assembliesToScan)
+        public QuartzAutofacJobsModule(params Assembly[] assembliesToScan)
         {
             if (assembliesToScan == null) throw new ArgumentNullException(nameof(assembliesToScan));
             _assembliesToScan = assembliesToScan;
@@ -66,7 +64,7 @@ namespace Autofac.Extras.Quartz
         protected override void Load(ContainerBuilder builder)
         {
             var registrationBuilder = builder.RegisterAssemblyTypes(_assembliesToScan)
-                .Where(type => !type.IsAbstract && typeof(IJob).IsAssignableFrom(type))
+                .Where(type => !type.GetTypeInfo().IsAbstract && typeof(IJob).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))
                 .AsSelf().InstancePerLifetimeScope();
 
             if (AutoWireProperties)

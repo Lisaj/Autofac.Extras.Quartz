@@ -12,10 +12,9 @@ namespace Autofac.Extras.Quartz
     using System;
     using System.Collections.Concurrent;
     using System.Globalization;
-    using Common.Logging;
     using global::Quartz;
     using global::Quartz.Spi;
-    using JetBrains.Annotations;
+    using Microsoft.Extensions.Logging;
 
     /// <summary>
     ///     Resolve Quartz Job and it's dependencies from Autofac container.
@@ -25,7 +24,6 @@ namespace Autofac.Extras.Quartz
     /// </remarks>
     public class AutofacJobFactory : IJobFactory, IDisposable
     {
-        static readonly ILog s_log = LogManager.GetLogger<AutofacJobFactory>();
         readonly ILifetimeScope _lifetimeScope;
 
         readonly string _scopeName;
@@ -39,13 +37,22 @@ namespace Autofac.Extras.Quartz
         ///     <paramref name="lifetimeScope" /> or <paramref name="scopeName" /> is
         ///     <see langword="null" />.
         /// </exception>
-        public AutofacJobFactory(ILifetimeScope lifetimeScope, string scopeName)
+        public AutofacJobFactory(ILifetimeScope lifetimeScope, string scopeName, ILoggerFactory loggerFactory)
         {
             if (lifetimeScope == null) throw new ArgumentNullException(nameof(lifetimeScope));
             if (scopeName == null) throw new ArgumentNullException(nameof(scopeName));
+            if (loggerFactory == null)
+            {
+                throw new ArgumentNullException(nameof(loggerFactory));
+            }
+
             _lifetimeScope = lifetimeScope;
             _scopeName = scopeName;
+
+            this.Logger = loggerFactory.CreateLogger<AutofacJobFactory>();
         }
+
+        protected ILogger Logger { get; private set; }
 
         internal ConcurrentDictionary<object, JobTrackingInfo> RunningJobs { get; } =
             new ConcurrentDictionary<object, JobTrackingInfo>();
@@ -60,7 +67,7 @@ namespace Autofac.Extras.Quartz
 
             if (runningJobs.Length > 0)
             {
-                s_log.InfoFormat("Cleaned {0} scopes for running jobs", runningJobs.Length);
+                this.Logger.LogInformation("Cleaned {0} scopes for running jobs", runningJobs.Length);
             }
         }
 
@@ -92,7 +99,6 @@ namespace Autofac.Extras.Quartz
         ///     Error resolving exception. Original exception will be stored in
         ///     <see cref="Exception.InnerException" />.
         /// </exception>
-        [NotNull]
         public IJob NewJob(TriggerFiredBundle bundle, IScheduler scheduler)
         {
             if (bundle == null) throw new ArgumentNullException(nameof(bundle));
@@ -109,10 +115,9 @@ namespace Autofac.Extras.Quartz
                 var jobTrackingInfo = new JobTrackingInfo(nestedScope);
                 RunningJobs[newJob] = jobTrackingInfo;
 
-                if (s_log.IsTraceEnabled)
+                if (this.Logger.IsEnabled(LogLevel.Trace))
                 {
-                    s_log.TraceFormat(CultureInfo.InvariantCulture, "Scope 0x{0:x} associated with Job 0x{1:x}",
-                        jobTrackingInfo.Scope.GetHashCode(), newJob.GetHashCode());
+                    this.Logger.LogTrace("Scope 0x{0:x} associated with Job 0x{1:x}", jobTrackingInfo.Scope.GetHashCode(), newJob.GetHashCode());
                 }
 
                 nestedScope = null;
@@ -133,7 +138,7 @@ namespace Autofac.Extras.Quartz
         /// <summary>
         ///     Allows the the job factory to destroy/cleanup the job if needed.
         /// </summary>
-        public void ReturnJob([CanBeNull] IJob job)
+        public void ReturnJob(IJob job)
         {
             if (job == null)
                 return;
@@ -141,7 +146,7 @@ namespace Autofac.Extras.Quartz
             JobTrackingInfo trackingInfo;
             if (!RunningJobs.TryRemove(job, out trackingInfo))
             {
-                s_log.WarnFormat("Tracking info for job 0x{0:x} not found", job.GetHashCode());
+                this.Logger.LogWarning("Tracking info for job 0x{0:x} not found", job.GetHashCode());
                 // ReSharper disable once SuspiciousTypeConversion.Global
                 var disposableJob = job as IDisposable;
                 disposableJob?.Dispose();
@@ -152,11 +157,11 @@ namespace Autofac.Extras.Quartz
             }
         }
 
-        static void DisposeScope(IJob job, ILifetimeScope lifetimeScope)
+        protected void DisposeScope(IJob job, ILifetimeScope lifetimeScope)
         {
-            if (s_log.IsTraceEnabled)
+            if (this.Logger.IsEnabled(LogLevel.Trace))
             {
-                s_log.TraceFormat("Disposing Scope 0x{0:x} for Job 0x{1:x}",
+                this.Logger.LogTrace("Disposing Scope 0x{0:x} for Job 0x{1:x}",
                     lifetimeScope?.GetHashCode() ?? 0,
                     job?.GetHashCode() ?? 0);
             }

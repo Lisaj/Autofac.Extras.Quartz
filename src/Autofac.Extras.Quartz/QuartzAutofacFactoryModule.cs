@@ -14,12 +14,11 @@ namespace Autofac.Extras.Quartz
     using global::Quartz;
     using global::Quartz.Impl;
     using global::Quartz.Spi;
-    using JetBrains.Annotations;
+    using Microsoft.Extensions.Logging;
 
     /// <summary>
     ///     Registers <see cref="ISchedulerFactory" /> and default <see cref="IScheduler" />.
     /// </summary>
-    [PublicAPI]
     public class QuartzAutofacFactoryModule : Module
     {
         /// <summary>
@@ -44,7 +43,7 @@ namespace Autofac.Extras.Quartz
         /// </summary>
         /// <param name="lifetimeScopeName">Name of the lifetime scope to wrap job resolution and execution.</param>
         /// <exception cref="System.ArgumentNullException">lifetimeScopeName</exception>
-        public QuartzAutofacFactoryModule([NotNull] string lifetimeScopeName)
+        public QuartzAutofacFactoryModule(string lifetimeScopeName)
         {
             if (lifetimeScopeName == null) throw new ArgumentNullException(nameof(lifetimeScopeName));
             _lifetimeScopeName = lifetimeScopeName;
@@ -56,7 +55,6 @@ namespace Autofac.Extras.Quartz
         ///     <para>See http://quartz-scheduler.org/documentation/quartz-2.x/configuration/ for settings description.</para>
         ///     <seealso cref="StdSchedulerFactory" /> for some configuration property names.
         /// </summary>
-        [CanBeNull]
         public Func<IComponentContext, NameValueCollection> ConfigurationProvider { get; set; }
 
         /// <summary>
@@ -69,9 +67,9 @@ namespace Autofac.Extras.Quartz
         ///     The builder through which components can be
         ///     registered.
         /// </param>
-        protected override void Load([NotNull] ContainerBuilder builder)
+        protected override void Load(ContainerBuilder builder)
         {
-            builder.Register(c => new AutofacJobFactory(c.Resolve<ILifetimeScope>(), _lifetimeScopeName))
+            builder.Register(c => new AutofacJobFactory(c.Resolve<ILifetimeScope>(), _lifetimeScopeName, c.Resolve<ILoggerFactory>()))
                 .AsSelf()
                 .As<IJobFactory>()
                 .SingleInstance();

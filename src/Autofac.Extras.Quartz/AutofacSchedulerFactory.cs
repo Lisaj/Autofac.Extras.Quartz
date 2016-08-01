@@ -14,12 +14,10 @@ namespace Autofac.Extras.Quartz
     using global::Quartz;
     using global::Quartz.Core;
     using global::Quartz.Impl;
-    using JetBrains.Annotations;
 
     /// <summary>
     ///     Scheduler factory which uses Autofac to instantiate jobs.
     /// </summary>
-    [PublicAPI]
     public class AutofacSchedulerFactory : StdSchedulerFactory
     {
         readonly AutofacJobFactory _jobFactory;
@@ -29,7 +27,7 @@ namespace Autofac.Extras.Quartz
         /// </summary>
         /// <param name="jobFactory">Job factory.</param>
         /// <exception cref="ArgumentNullException"><paramref name="jobFactory" /> is <see langword="null" />.</exception>
-        public AutofacSchedulerFactory([NotNull] AutofacJobFactory jobFactory)
+        public AutofacSchedulerFactory(AutofacJobFactory jobFactory)
         {
             if (jobFactory == null) throw new ArgumentNullException(nameof(jobFactory));
             _jobFactory = jobFactory;
@@ -41,7 +39,7 @@ namespace Autofac.Extras.Quartz
         /// <param name="props">The properties.</param>
         /// <param name="jobFactory">Job factory</param>
         /// <exception cref="ArgumentNullException"><paramref name="jobFactory" /> is <see langword="null" />.</exception>
-        public AutofacSchedulerFactory(NameValueCollection props, [NotNull] AutofacJobFactory jobFactory)
+        public AutofacSchedulerFactory(NameValueCollection props, AutofacJobFactory jobFactory)
             : base(props)
         {
             if (jobFactory == null) throw new ArgumentNullException(nameof(jobFactory));

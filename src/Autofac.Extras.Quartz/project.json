@@ -3,14 +3,17 @@
 
   "dependencies": {
     "Autofac": "4.0.0-rc3-316",
-    "Common.Logging": "3.4.0-Alpha1",
-    "Common.Logging.Core": "3.4.0-Alpha1",
-    "JetBrains.Annotations": "10.1.5",
+    "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
     "Quartz": "3.0.0-*"
   },
 
   "frameworks": {
     "net461": {
+      "frameworkAssemblies": {
+        "System.Runtime": "4.0.20.0"
+      }
+    },
+    "netstandard1.5": {
     }
   }
 }
