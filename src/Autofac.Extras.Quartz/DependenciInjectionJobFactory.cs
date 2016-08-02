@@ -25,18 +25,17 @@ namespace Autofac.Extras.Quartz
     /// </remarks>
     public class DependenciInjectionJobFactory : IJobFactory, IDisposable
     {
-        readonly IServiceProvider _serviceProvider;
+        readonly IServiceScopeFactory _serviceProvider;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DependenciInjectionJobFactory" /> class.
         /// </summary>
         /// <param name="serviceProvider">The lifetime scope.</param>
-        /// <param name="scopeName">Name of the scope.</param>
         /// <exception cref="ArgumentNullException">
         ///     <paramref name="serviceProvider" /> or <paramref name="scopeName" /> is
         ///     <see langword="null" />.
         /// </exception>
-        public DependenciInjectionJobFactory(IServiceProvider serviceProvider, string scopeName, ILoggerFactory loggerFactory)
+        public DependenciInjectionJobFactory(IServiceScopeFactory serviceProvider, ILoggerFactory loggerFactory)
         {
             if (serviceProvider == null) throw new ArgumentNullException(nameof(serviceProvider));
             if (loggerFactory == null)
@@ -103,7 +102,7 @@ namespace Autofac.Extras.Quartz
 
             var jobType = bundle.JobDetail.JobType;
 
-            var nestedScope = _serviceProvider.GetRequiredService<IServiceScope>();
+            var nestedScope = _serviceProvider.CreateScope();
 
             IJob newJob = null;
             try
@@ -162,6 +161,7 @@ namespace Autofac.Extras.Quartz
                     lifetimeScope?.GetHashCode() ?? 0,
                     job?.GetHashCode() ?? 0);
             }
+
             lifetimeScope?.Dispose();
         }
 

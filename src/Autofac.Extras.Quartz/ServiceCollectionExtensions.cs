@@ -22,6 +22,16 @@ namespace Autofac.Extras.Quartz
     /// </summary>
     public static class ServiceCollectionExtensions
     {
+        public static IServiceCollection AddJobFactory(this IServiceCollection services)
+        {
+            if (services == null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
+
+            return AddJobFactoryInternal(services, null);
+        }
+
         public static IServiceCollection AddJobFactory(this IServiceCollection services, NameValueCollection props)
         {
             if (services == null)
@@ -29,17 +39,35 @@ namespace Autofac.Extras.Quartz
                 throw new ArgumentNullException(nameof(services));
             }
 
-            services.AddSingleton<IJobFactory, DependenciInjectionJobFactory>();
-
-            services.AddSingleton(typeof(ISchedulerFactory), provider =>
+            if (props == null)
             {
-                return new DependenciInjectionSchedulerFactory(props, provider.GetRequiredService<IJobFactory>() as DependenciInjectionJobFactory);
-            });
+                throw new ArgumentNullException(nameof(props));
+            }
 
-            //services.AddSingleton(typeof(Scheduler))
+            return AddJobFactoryInternal(services, props);
+        }
 
-            //builder.Register(c => c.Resolve<ISchedulerFactory>().GetScheduler())
-            //    .SingleInstance();
+        private static IServiceCollection AddJobFactoryInternal(this IServiceCollection services, NameValueCollection props)
+        {
+            services.AddSingleton<IJobFactory, DependenciInjectionJobFactory>();
+            services.AddSingleton(provider => provider.GetRequiredService<IJobFactory>() as DependenciInjectionJobFactory);
+
+            if (props == null)
+            {
+                services.AddSingleton(typeof(ISchedulerFactory), provider =>
+                {
+                    return new DependenciInjectionSchedulerFactory(provider.GetRequiredService<IJobFactory>() as DependenciInjectionJobFactory);
+                });
+            }
+            else
+            {
+                services.AddSingleton(typeof(ISchedulerFactory), provider =>
+                {
+                    return new DependenciInjectionSchedulerFactory(props, provider.GetRequiredService<IJobFactory>() as DependenciInjectionJobFactory);
+                });
+            }
+
+            services.AddSingleton(provider => provider.GetRequiredService<ISchedulerFactory>().GetScheduler().Result);
 
             return services;
         }
