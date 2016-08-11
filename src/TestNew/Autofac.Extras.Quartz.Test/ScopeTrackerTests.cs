@@ -17,7 +17,7 @@ namespace Autofac.Extras.Quartz.Test
     public class ScopeTrackerTests
     {
         [Fact]
-        public async Task ReturnJob_Should_DisposeJobIfMatchingScopeIsMissing()
+        public void ReturnJob_Should_DisposeJobIfMatchingScopeIsMissing()
         {
             var cb = new ServiceCollection();
             cb.AddScoped<SampleJob>();
@@ -38,7 +38,7 @@ namespace Autofac.Extras.Quartz.Test
         }
 
         [Fact]
-        public async Task ReturnJob_Should_HandleMissingMatchingScope()
+        public void ReturnJob_Should_HandleMissingMatchingScope()
         {
             var cb = new ServiceCollection();
             cb.AddScoped<SampleJob>();
