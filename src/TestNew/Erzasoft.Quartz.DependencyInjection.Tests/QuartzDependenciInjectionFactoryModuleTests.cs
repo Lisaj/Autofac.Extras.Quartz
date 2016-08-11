@@ -10,12 +10,12 @@ using Quartz.Simpl;
 using Quartz.Spi;
 using Xunit;
 
-namespace Autofac.Extras.Quartz.Test
+namespace Erzasoft.Quartz.DependencyInjection.Tests
 {
-    public class QuartzAutofacFactoryModuleTests
+    public class QuartzDependenciInjectionFactoryModuleTests
     {
         [Fact]
-        public void ShouldRegisterAutofacSchedulerFactory()
+        public void ShouldRegisterSchedulerFactory()
         {
             var serviceProvider = this.PrepairServiceProvider();
 
@@ -36,7 +36,7 @@ namespace Autofac.Extras.Quartz.Test
         }
 
         [Fact]
-        public void ShouldRegisterAutofacJobFactory()
+        public void ShouldRegisterJobFactory()
         {
             var serviceProvider = this.PrepairServiceProvider();
 

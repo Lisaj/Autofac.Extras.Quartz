@@ -12,7 +12,7 @@ using Quartz.Impl;
 using Quartz.Simpl;
 using Xunit;
 
-namespace Autofac.Extras.Quartz.Test
+namespace Erzasoft.Quartz.DependencyInjection.Tests
 {
     public class ScopeTrackerTests
     {

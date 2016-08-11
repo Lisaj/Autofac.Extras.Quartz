@@ -7,7 +7,7 @@
 
 #endregion
 
-namespace Autofac.Extras.Quartz
+namespace Erzasoft.Quartz.DependencyInjection
 {
     using System;
     using System.Collections.Specialized;

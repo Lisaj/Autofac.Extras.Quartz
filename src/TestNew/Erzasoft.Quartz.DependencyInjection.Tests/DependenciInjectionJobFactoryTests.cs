@@ -10,9 +10,9 @@ using Quartz.Impl;
 using Quartz.Spi;
 using Xunit;
 
-namespace Autofac.Extras.Quartz.Test
+namespace Erzasoft.Quartz.DependencyInjection.Tests
 {
-    public class AutofacJobFactoryTests
+    public class DependenciInjectionJobFactoryTests
     {
         [Fact]
         public void Should_Create_InterruptableWrapper_For_InterruptableJob()

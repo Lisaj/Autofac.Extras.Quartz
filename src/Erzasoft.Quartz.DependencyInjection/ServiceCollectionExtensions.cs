@@ -7,15 +7,13 @@
 
 #endregion
 
-namespace Autofac.Extras.Quartz
+namespace Erzasoft.Quartz.DependencyInjection
 {
     using System;
     using System.Collections.Specialized;
     using global::Quartz;
-    using global::Quartz.Impl;
     using global::Quartz.Spi;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
 
     /// <summary>
     ///     Registers <see cref="ISchedulerFactory" /> and default <see cref="IScheduler" />.
