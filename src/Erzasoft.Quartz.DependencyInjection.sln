@@ -25,11 +25,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "submodules", "submodules", 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Quartz", "..\submodules\Quartz\src\Quartz\Quartz.xproj", "{0545C4AC-45BE-47C3-81B7-1592579B9C31}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestsNew", "TestsNew", "{BF87C0C1-CCA2-44E4-991F-1FDEAA015951}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{BF87C0C1-CCA2-44E4-991F-1FDEAA015951}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Erzasoft.Quartz.DependencyInjection", "Erzasoft.Quartz.DependencyInjection\Erzasoft.Quartz.DependencyInjection.xproj", "{9D320EF9-D72B-4FA0-B0F0-E759848BAE7C}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Erzasoft.Quartz.DependencyInjection.Tests", "TestNew\Erzasoft.Quartz.DependencyInjection.Tests\Erzasoft.Quartz.DependencyInjection.Tests.xproj", "{8B9D0423-E0AC-4A12-A980-4D8247EB192B}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Erzasoft.Quartz.DependencyInjection.Tests", "Tests\Erzasoft.Quartz.DependencyInjection.Tests\Erzasoft.Quartz.DependencyInjection.Tests.xproj", "{8B9D0423-E0AC-4A12-A980-4D8247EB192B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
