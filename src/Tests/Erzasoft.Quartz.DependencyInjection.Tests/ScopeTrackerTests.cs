@@ -81,8 +81,8 @@ namespace Erzasoft.Quartz.DependencyInjection.Tests
             var trigger =
                 TriggerBuilder.Create().WithSimpleSchedule(s => s.WithIntervalInSeconds(1).WithRepeatCount(1)).Build();
 
-            var scopesCreated = 0;
-            var scopesDisposed = 0;
+            ////var scopesCreated = 0;
+            ////var scopesDisposed = 0;
             DisposableDependency dependency = null;
 
             //serviceCsopeFactory.ChildLifetimeScopeBeginning += (sender, args) =>
