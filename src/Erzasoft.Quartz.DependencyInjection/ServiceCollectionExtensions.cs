@@ -7,13 +7,13 @@
 
 #endregion
 
-namespace Erzasoft.Quartz.DependencyInjection
+namespace Microsoft.Extensions.DependencyInjection
 {
     using System;
     using System.Collections.Specialized;
+    using Erzasoft.Quartz.DependencyInjection;
     using global::Quartz;
     using global::Quartz.Spi;
-    using Microsoft.Extensions.DependencyInjection;
 
     /// <summary>
     ///     Registers <see cref="ISchedulerFactory" /> and default <see cref="IScheduler" />.
