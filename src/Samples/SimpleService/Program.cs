@@ -13,7 +13,7 @@ namespace SimpleService
     using System.Collections.Specialized;
     using AppServices;
     using Autofac;
-    using Autofac.Extras.Quartz;
+    //using Autofac.Extras.Quartz;
     using Common.Logging;
     using Jobs;
     using Quartz;
@@ -88,10 +88,10 @@ namespace SimpleService
                 {"quartz.scheduler.threadName", "Scheduler"}
             };
 
-            cb.RegisterModule(new QuartzAutofacFactoryModule {
-                ConfigurationProvider = c => schedulerConfig
-            });
-            cb.RegisterModule(new QuartzAutofacJobsModule(typeof(HeartbeatJob).Assembly));
+            //cb.RegisterModule(new QuartzAutofacFactoryModule {
+            //    ConfigurationProvider = c => schedulerConfig
+            //});
+            //cb.RegisterModule(new QuartzAutofacJobsModule(typeof(HeartbeatJob).Assembly));
 
             RegisterComponents(cb);
             return cb;
