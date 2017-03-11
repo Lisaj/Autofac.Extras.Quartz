@@ -13,6 +13,7 @@ namespace SimpleService.Jobs
     using AppServices;
     using Common.Logging;
     using Quartz;
+    using System.Threading.Tasks;
 
     public class HeartbeatJob : IJob
     {
@@ -25,9 +26,10 @@ namespace SimpleService.Jobs
             _hearbeat = hearbeat;
         }
 
-        public void Execute(IJobExecutionContext context)
+        public Task Execute(IJobExecutionContext context)
         {
             _hearbeat.UpdateServiceState("alive");
+            return Task.CompletedTask;
         }
     }
 }
